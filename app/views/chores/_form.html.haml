@@ -1,0 +1,24 @@
+= simple_form_for(@chore, html: {class: 'form-horizontal'})  do |f|
+
+  =f.collection_select :category_id, Category.all, :id, :name, {prompt: "Please choose a category" }, input_html: { class: "dropdown-toggle" }
+  =f.input :title, label: "Chore", input_html: { class: "form-control" }
+  =f.input :description, label: "Chore Description", input_html: { class: "form-control" }
+  
+  Due date
+  =f.collection_select :month_id, Months.all, :id,  :name, {prompt: "Please choose a month due" }, input_html: { class: "dropdown-toggle" }
+  
+ 
+  Day
+  =f.input_field :day,  as: :string, maxlength: 2, size: 2
+  %p
+  
+  Status
+  =f.collection_select :status, Status.all, :status_where, :status_where, {prompt: "Please set status" }, input_html: { class: "dropdown-toggle" }
+  %p
+  
+  =f.button :submit
+  
+
+
+
+  

@@ -1,0 +1,10 @@
+  attr_accessible :entry_date_formatted
+
+  def entry_date_formatted
+    self.entry_date.strftime '%d.%m.%Y' unless self.entry_date.nil?
+  end
+
+  def entry_date_formatted=(value)
+    return if value.nil? or value.blank?
+    self.entry_date = DateTime.strptime(value, '%d.%m.%Y').to_date
+  end

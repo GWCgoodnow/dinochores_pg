@@ -1,0 +1,17 @@
+#chores
+  -@chores.each do |chore|
+    .chore
+      %h2=link_to chore.title, chore
+      
+     
+      Due Date:
+      %nbsp= chore.month_id
+      %nbsp= "/"
+      %nbsp= chore.day
+      
+      %p
+      Status:
+      %nbsp= chore.status
+
+      
+

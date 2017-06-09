@@ -1,0 +1,23 @@
+!!!
+%html
+%head
+  %title DinoChores
+  = stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'home', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  
+%body
+  %nav.navbar.navbar-default
+    .container
+      .navbar-brand DinoChores
+      %ul.nav.navbar-nav
+        %li= link_to "Home", root_path/homepage.html.haml
+        %li= link_to "All Chores", root_path
+        - Category.all.each do |category|
+          %li= link_to category.name, jobs_path(category: category.name)
+        %li= link_to "About Us", root_path 
+      = link_to "New Chore", new_job_path, class: "navbar-text navbar-right navbar-link"
+      
+  .container
+    .col-md-6.col-md-offset-3
+    = yield

@@ -1,0 +1,22 @@
+!!!
+%html
+%head
+  %title DinoChores
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  
+%body
+  %nav.navbar.navbar-default
+    .container
+      .navbar-brand DinoChores
+      %ul.nav.navbar-nav
+        %li= link_to "ALL CHORES", root_path
+        - Category.all.each do |category|
+          %li= link_to category.name, chores_path(category: category.name)
+      = link_to "New Chore", new_chore_path, class: "navbar-text navbar-right navbar-link"
+      
+     
+  .container
+    .col-md-20.col-md-offset-3
+    = yield
